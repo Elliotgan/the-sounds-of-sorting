@@ -1,12 +1,21 @@
 package edu.grinnell.csc207.soundsofsorting;
 
+import edu.grinnell.csc207.soundsofsorting.sortevents.SortEvent;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.function.Consumer;
 
 import org.junit.jupiter.api.Test;
 
-import edu.grinnell.csc207.soundsofsorting.sorts.Sorts;
+import static edu.grinnell.csc207.soundsofsorting.sorts.Sorts.bubbleSort;
+import static edu.grinnell.csc207.soundsofsorting.sorts.Sorts.eventSort;
+import static edu.grinnell.csc207.soundsofsorting.sorts.Sorts.insertionSort;
+import static edu.grinnell.csc207.soundsofsorting.sorts.Sorts.mergeSort;
+import static edu.grinnell.csc207.soundsofsorting.sorts.Sorts.mySort;
+import static edu.grinnell.csc207.soundsofsorting.sorts.Sorts.quickSort;
+import static edu.grinnell.csc207.soundsofsorting.sorts.Sorts.selectionSort;
+import java.util.Arrays;
+import java.util.List;
 
 public class SortsTests {
     /**
@@ -32,34 +41,170 @@ public class SortsTests {
         };
     }
 
+    
+    public static Integer[] makeTestArray2() {
+        return new Integer[] {
+        };
+    }
+
+    public static Integer[] makeTestArray3() {
+        return new Integer[] {
+            19, 18, 17, 16, 15, 14,
+            13, 12, 11, 10, 9, 8,
+            7, 6, 5, 4, 3, 2, 1, 0
+        };
+    }
+
     public void testSort(Consumer<Integer[]> func) {
         Integer[] arr = makeTestArray();
         func.accept(arr);
         assertTrue(sorted(arr));
     }
+    
+
 
     @Test
     public void testBubbleSort() {
-        testSort(Sorts::bubbleSort);
+        Integer[] arr = makeTestArray();
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = bubbleSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray2();
+        arr2 = makeTestArray2();
+        events = bubbleSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray3();
+        arr2 = makeTestArray3();
+        events = bubbleSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+        
     }
     
     @Test
     public void testInsertionSort() {
-        testSort(Sorts::insertionSort);
+        Integer[] arr = makeTestArray();
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = insertionSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray2();
+        arr2 = makeTestArray2();
+        events = insertionSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray3();
+        arr2 = makeTestArray3();
+        events = insertionSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
     
     @Test
     public void testSelectionSort() {
-        testSort(Sorts::selectionSort);
+        Integer[] arr = makeTestArray();
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = selectionSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray2();
+        arr2 = makeTestArray2();
+        events = selectionSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray3();
+        arr2 = makeTestArray3();
+        events = selectionSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
 
     @Test
     public void testMergeSort() {
-        testSort(Sorts::mergeSort);
+        Integer[] arr = makeTestArray();
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = mergeSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray2();
+        arr2 = makeTestArray2();
+        events = mergeSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray3();
+        arr2 = makeTestArray3();
+        events = mergeSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
     
     @Test
     public void testQuickSort() {
-        testSort(Sorts::quickSort);
+        Integer[] arr = makeTestArray();
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = quickSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray2();
+        arr2 = makeTestArray2();
+        events = quickSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray3();
+        arr2 = makeTestArray3();
+        events = quickSort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+    }
+    
+    @Test
+    public void testMySort() {
+        Integer[] arr = makeTestArray();
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = mySort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray2();
+        arr2 = makeTestArray2();
+        events = mySort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
+
+        arr = makeTestArray3();
+        arr2 = makeTestArray3();
+        events = mySort(arr);
+        eventSort(arr2, events);
+        assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
 }
