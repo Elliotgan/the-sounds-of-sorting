@@ -41,14 +41,10 @@ public class ArrayPanel extends JPanel {
         double highcast = ((double) height - minimumheight) / longgest;
         g.clearRect(0, 0, this.getWidth(), height);
         for (int iter = 0; iter < intarr.length; iter++) {
-            // int barHeight = (int) ((double) intarr[iter] / intarr.length * height);
             int currentval = intarr[iter];
             int barHeight = (int) (currentval * highcast + minimumheight);
             double colorpercentage = ((double) barHeight) / height;
             int blueval = (int) (255 * colorpercentage);
-            // System.out.println("this is item " + iter + ", value stored is " +
-            // currentval);
-            // System.out.println("width is " + barWidth);
             g.setColor(new Color(35, 135, blueval));
             g.fillRect((iter * barWidth), height - barHeight, barWidth, barHeight);
         }

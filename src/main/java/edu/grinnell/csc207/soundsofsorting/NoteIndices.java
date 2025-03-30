@@ -59,8 +59,6 @@ public class NoteIndices {
      * @param index the index to highlight
      */
     public void highlightNote(int index) {
-        // System.out.println("wow, highlight" + index);
-        // System.out.println("current note length is " + this.indices.size());
         highlights.add(index);
     }
 

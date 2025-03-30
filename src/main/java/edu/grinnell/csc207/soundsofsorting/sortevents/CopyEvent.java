@@ -34,11 +34,14 @@ public class CopyEvent<T> implements SortEvent<T> {
      */
     @Override
     public List<Integer> getAffectedIndices() {
-        List ret = new ArrayList();
+        List<Integer> ret = new ArrayList<>();
         ret.add(index);
         return ret;
     }
 
+    /**
+     * @return <code>true</code> iff this event is emphasized
+     */
     @Override
     public boolean isEmphasized() {
         return true;

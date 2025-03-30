@@ -38,7 +38,7 @@ public class CompareEvent<T> implements SortEvent<T> {
      */
     @Override
     public List<Integer> getAffectedIndices() {
-        List ret = new ArrayList();
+        List<Integer> ret = new ArrayList<>();
         ret.add(index1);
         ret.add(index2);
         return ret;
